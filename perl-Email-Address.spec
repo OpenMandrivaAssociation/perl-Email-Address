@@ -11,7 +11,7 @@ Summary:        RFC 2822 Address Parsing and Creation
 License:        GPL or Artistic
 Group:          Development/Perl
 URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Config/%{module}-%{up_version}.tar.bz2
+Source:         http://www.cpan.org/modules/by-module/Email/%{module}-%{up_version}.tar.bz2
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
