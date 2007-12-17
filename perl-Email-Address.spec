@@ -16,7 +16,6 @@ Source:         http://www.cpan.org/modules/by-module/Email/%{module}-%{up_versi
 BuildRequires:  perl-devel
 %endif
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 This class implements a complete RFC 2822 parser that locates
