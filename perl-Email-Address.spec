@@ -1,19 +1,18 @@
-%define module  Email-Address
-%define name        perl-%{module}
-%define up_version  1.889
-%define version     %perl_convert_version %{up_version}
-%define release     %mkrel 3
+%define upstream_name    Email-Address
+%define upstream_version 1.890
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:        RFC 2822 Address Parsing and Creation
-License:        GPL or Artistic
+License:        GPL+ or Artistic
 Group:          Development/Perl
-URL:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Email/%{module}-%{up_version}.tar.gz
+urL:            http://search.cpan.org/dist/%{upstream_name}
+Source0:        http://www.cpan.org/modules/by-module/Email/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This class implements a complete RFC 2822 parser that locates
@@ -22,7 +21,7 @@ objects found. Alternatley you may construct objects manually.
 The goal of this software is to be correct, and very very fast.
 
 %prep
-%setup -q -n %{module}-%{up_version} 
+%setup -q -n %{upstream_name}-%{upstream_version} 
 perl -pi -e 's|/usr/local/bin/perl|%{__perl}|' bench/ea-vs-ma.pl
 
 %build
@@ -30,7 +29,7 @@ perl -pi -e 's|/usr/local/bin/perl|%{__perl}|' bench/ea-vs-ma.pl
 %make
 
 %check
-%{__make} test
+%make test
 
 %install
 rm -rf %{buildroot}
@@ -41,7 +40,6 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc Changes README bench
+%doc Changes README bench META.yml
 %{perl_vendorlib}/Email
 %{_mandir}/man3/*
-
