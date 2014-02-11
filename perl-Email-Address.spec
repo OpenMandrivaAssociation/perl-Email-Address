@@ -1,14 +1,14 @@
 %define modname	Email-Address
-%define modver	1.892
+%define modver 1.901
 
 Summary:	RFC 2822 Address Parsing and Creation
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	10
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
-Source0:	http://www.cpan.org/modules/by-module/Email/%{modname}-%{modver}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Email/Email-Address-%{modver}.tar.gz
 BuildArch:	noarch
 BuildRequires:	perl-devel
 
@@ -36,4 +36,5 @@ perl -pi -e 's|/usr/local/bin/perl|%{__perl}|' bench/ea-vs-ma.pl
 %doc Changes README bench META.yml
 %{perl_vendorlib}/Email
 %{_mandir}/man3/*
+
 
