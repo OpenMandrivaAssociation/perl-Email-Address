@@ -1,11 +1,11 @@
 %define modname	Email-Address
-%define modver 1.905
+%define modver 1.907
 
 Summary:	RFC 2822 Address Parsing and Creation
 
 Name:		perl-%{modname}
 Version:	%perl_convert_version %{modver}
-Release:	3
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
@@ -21,10 +21,10 @@ The goal of this software is to be correct, and very very fast.
 
 %prep
 %setup -qn %{modname}-%{modver} 
-perl -pi -e 's|/usr/local/bin/perl|%{__perl}|' bench/ea-vs-ma.pl
+perl -pi -e 's|/usr/local/bin/perl|perl|' bench/ea-vs-ma.pl
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
