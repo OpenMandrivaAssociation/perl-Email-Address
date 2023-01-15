@@ -1,15 +1,13 @@
 %define modname	Email-Address
-%define modver 1.905
 
 Summary:	RFC 2822 Address Parsing and Creation
-
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
+Version:	1.913
 Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}
-Source0:	http://www.cpan.org/modules/by-module/Email/%{modname}-%{modver}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Email/%{modname}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	perl(Test::More)
 BuildRequires:	perl-devel
@@ -21,18 +19,18 @@ objects found. Alternatley you may construct objects manually.
 The goal of this software is to be correct, and very very fast.
 
 %prep
-%setup -qn %{modname}-%{modver} 
+%autosetup -p1 -n %{modname}-%{version} 
 perl -pi -e 's|/usr/local/bin/perl|%{__perl}|' bench/ea-vs-ma.pl
+perl Makefile.PL INSTALLDIRS=vendor
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
 %make test
 
 %install
-%makeinstall_std
+%make_install
 
 %files
 %doc Changes README bench META.yml
